@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budgie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/adc98de5e5.js"
+      crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div>
+      <header>Personal Budget</header>
+
+      <main>
+        <section id="balance">balance: 0$</section>
+
+        <section id="add-transaction">
+          <h2>Add a new transaction</h2>
+          <form>
+            <input
+              type="text"
+              id="transaction-name"
+              name="name"
+              placeholder="Name" />
+            <input
+              type="text"
+              id="transaction-amount"
+              name="amount"
+              placeholder="Amount" />
+            <fieldset id="type">
+              <legend>Type:</legend>
+              <label>
+                <input type="radio" name="type" value="income" /> Income
+              </label>
+              <label>
+                <input type="radio" name="type" value="expense" /> Expense
+              </label>
+            </fieldset>
+            <button type="submit" id="submit">Add</button>
+          </form>
+        </section>
+
+        <section id="transaction-list">
+          <h2>List of transactions</h2>
+          <ul>
+            <li>
+              <i class="fa-solid fa-circle-down"></i>
+              <div class="transaction-info">
+                <span class="transaction-name-li"
+                  >Transactasdadsadadadadadadadadion 1</span
+                >
+                <span class="transaction-amount-li">+3000 zł</span>
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-up"></i>
+              <div class="transaction-info">
+                <span class="transaction-name-li">Transaction 2</span>
+                <span class="transaction-amount-li">+3000 zł</span>
+              </div>
+            </li>
+          </ul>
+          <button>Delete all</button>
+        </section>
+      </main>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
