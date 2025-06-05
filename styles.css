@@ -44,10 +44,20 @@ h1 {
 }
 
 #filter {
-    font-size: 1rem;
-    border: none;
-    width: fit-content;
-    border-bottom: 0.125em solid rgba(71, 71, 71, 0.349);
+  margin-top: -1rem;
+  max-width: fit-content;
+  padding: 0.25em 0.5em;
+  background-color: #f3f3f3;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid rgba(71, 71, 71, 0.35);
+  border-radius: 0.25em 0.25em 0 0;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#filter:focus {
+  border-bottom-color: rgba(71, 71, 71, 0.8);
 }
 
  h2, #type {

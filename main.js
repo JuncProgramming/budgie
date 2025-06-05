@@ -5,7 +5,8 @@ const transactionAmountInput = document.getElementById('transaction-amount');
 const typeInput = document.querySelector('#type input[name="type"]:checked');
 const typeValue = typeInput ? typeInput.value : '';
 const listHeader = document.getElementById('transaction-header');
-const ul = document.querySelector('ul');
+const filter = document.getElementById('filter');
+const ul = document.getElementById('transactions-list');
 const deleteAllBtn = document.getElementById('delete');
 
 const getTransactions = () => {
@@ -38,13 +39,15 @@ const addTransaction = (e) => {
   updateUI();
 };
 
-const updateUI = () => {
-  const transactions = getTransactions();
+const updateUI = (transactions = getTransactions(), isFiltered = false) => {
+  let sum = 0;
   while (ul.firstChild) ul.removeChild(ul.firstChild);
 
   if (transactions.length === 0) {
     balance.style.display = 'none';
-    listHeader.textContent = 'No transactions yet';
+    listHeader.textContent = isFiltered
+      ? 'No transactions matching this criteria'
+      : 'No transactions yet';
     ul.style.display = 'none';
     deleteAllBtn.style.display = 'none';
   } else {
@@ -53,6 +56,10 @@ const updateUI = () => {
     ul.style.display = 'flex';
     deleteAllBtn.style.display = 'block';
   }
+
+  isFiltered
+    ? (filter.style.display = 'block')
+    : (filter.style.display = transactions.length > 0 ? 'block' : 'none');
 
   transactions.forEach((transaction) => {
     const item = document.createElement('li');
@@ -69,6 +76,10 @@ const updateUI = () => {
     const amount = document.createElement('span');
     amount.classList.add('transaction-amount-li');
 
+    transaction.type === 'income'
+      ? (sum += Number(transaction.amount))
+      : (sum -= Number(transaction.amount));
+
     item.appendChild(icon);
     item.appendChild(div);
     div.appendChild(name);
@@ -81,32 +92,49 @@ const updateUI = () => {
     }).format(transaction.amount)),
       ul.appendChild(item);
   });
+  balance.textContent = new Intl.NumberFormat('pl-PL', {
+    style: 'currency',
+    currency: 'PLN',
+  }).format(sum);
+};
+
+const onFilter = (e) => {
+  const transactions = getTransactions();
+  const filteredTransactions = transactions.filter((transaction) =>
+    transaction.name.toLowerCase().includes(e.target.value.toLowerCase())
+  );
+  updateUI(filteredTransactions, true);
 };
 
 const deleteItem = (e) => {
   if (e.target.closest('li')) {
     const transactions = getTransactions();
-    if(confirm('Are you sure you want to delete this transaction?')) {
-    const filteredTransactions = transactions.filter(
-      (transaction) =>
-        transaction.id !== Number(e.target.closest('li').dataset.id)
-    );
-    localStorage.setItem('transactions', JSON.stringify(filteredTransactions));
-    updateUI();
-  } }else {
+    if (confirm('Are you sure you want to delete this transaction?')) {
+      const filteredTransactions = transactions.filter(
+        (transaction) =>
+          transaction.id !== Number(e.target.closest('li').dataset.id)
+      );
+      localStorage.setItem(
+        'transactions',
+        JSON.stringify(filteredTransactions)
+      );
+      updateUI();
+    }
+  } else {
     return;
   }
 };
 
 const deleteAll = () => {
-  if(confirm('Are you sure you want to delete all transactions?')) {
-  localStorage.removeItem('transactions');
-  ul.querySelectorAll('li').forEach((li) => li.remove());
-  updateUI();
+  if (confirm('Are you sure you want to delete all transactions?')) {
+    localStorage.removeItem('transactions');
+    ul.querySelectorAll('li').forEach((li) => li.remove());
+    updateUI();
   }
 };
 
 form.addEventListener('submit', addTransaction);
+filter.addEventListener('input', onFilter);
 ul.addEventListener('click', deleteItem);
 deleteAllBtn.addEventListener('click', deleteAll);
 
