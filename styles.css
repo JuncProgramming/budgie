@@ -2,6 +2,11 @@
      margin: 0;
      box-sizing: border-box;
 }
+
+h1 {
+    margin: .5rem 0
+}
+
  body {
      font-family: 'Inter', sans-serif;
      background-color: #f0f0f0;
@@ -37,6 +42,14 @@
      border-radius: 0.5rem;
      border: 0.125em solid rgba(71, 71, 71, 0.349);
 }
+
+#filter {
+    font-size: 1rem;
+    border: none;
+    width: fit-content;
+    border-bottom: 0.125em solid rgba(71, 71, 71, 0.349);
+}
+
  h2, #type {
      margin-left: 0.25rem;
 }
@@ -85,6 +98,7 @@
      display: block;
      margin: 0;
      padding: 0.75em;
+     font-weight: 600;
      font-size: 1rem;
      width: 100%;
      border: 0.125em solid rgba(71, 71, 71, 0.349);
