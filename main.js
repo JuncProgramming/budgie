@@ -2,8 +2,6 @@ const balance = document.getElementById('balance');
 const form = document.querySelector('form');
 const transactionNameInput = document.getElementById('transaction-name');
 const transactionAmountInput = document.getElementById('transaction-amount');
-const typeInput = document.querySelector('#type input[name="type"]:checked');
-const typeValue = typeInput ? typeInput.value : '';
 const listHeader = document.getElementById('transaction-header');
 const filter = document.getElementById('filter');
 const ul = document.getElementById('transactions-list');
@@ -107,21 +105,15 @@ const onFilter = (e) => {
 };
 
 const deleteItem = (e) => {
-  if (e.target.closest('li')) {
-    const transactions = getTransactions();
-    if (confirm('Are you sure you want to delete this transaction?')) {
-      const filteredTransactions = transactions.filter(
-        (transaction) =>
-          transaction.id !== Number(e.target.closest('li').dataset.id)
-      );
-      localStorage.setItem(
-        'transactions',
-        JSON.stringify(filteredTransactions)
-      );
-      updateUI();
-    }
-  } else {
-    return;
+  if (!e.target.closest('li')) return;
+  const transactions = getTransactions();
+  if (confirm('Are you sure you want to delete this transaction?')) {
+    const filteredTransactions = transactions.filter(
+      (transaction) =>
+        transaction.id !== Number(e.target.closest('li').dataset.id)
+    );
+    localStorage.setItem('transactions', JSON.stringify(filteredTransactions));
+    updateUI();
   }
 };
 
