@@ -1,176 +1,208 @@
 * {
-     margin: 0;
-     box-sizing: border-box;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 h1 {
-    margin: .5rem 0
+  margin: 0.5rem 0;
 }
 
- body {
-     font-family: 'Inter', sans-serif;
-     background-color: #f0f0f0;
-     min-height: 100vh;
-     display: flex;
-     align-items: center;
-     justify-content: center;
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0b1216;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d8e3e7;
 }
- div {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     width: 50vw;
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50vw;
 }
- header {
-     font-size: 2rem;
-     text-align: center;
+
+header {
+  font-size: 2rem;
+  text-align: center;
+  color: #7cffc6;
 }
- #balance {
-     font-size: 1.5rem;
-     text-align: center;
+
+#balance {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #008348;
 }
- #add-transaction, #transaction-list {
-     display: flex;
-     flex-direction: column;
-     gap: 1.5rem;
-     width: 100%;
-     padding: 0.75rem;
-     margin: 1rem 0;
-     backdrop-filter: blur(25px) saturate(200%);
-     -webkit-backdrop-filter: blur(25px) saturate(200%);
-     background-color: rgba(255, 255, 255, 0.72);
-     border-radius: 0.5rem;
-     border: 0.125em solid rgba(71, 71, 71, 0.349);
+
+#add-transaction,
+#transaction-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0.75rem;
+  margin: 1rem 0;
+  background-color: #162b24;
+  border-radius: 0.5rem;
 }
 
 #filter {
   margin-top: -1rem;
   max-width: fit-content;
   padding: 0.25em 0.5em;
-  background-color: #f3f3f3;
+  background-color: hsl(0, 0%, 18%);
   font-size: 1rem;
   border: none;
-  border-bottom: 2px solid rgba(71, 71, 71, 0.35);
+  border-bottom: 2px solid #0e7c4a;
   border-radius: 0.25em 0.25em 0 0;
   outline: none;
+  color: #d8e3e7;
   transition: border-color 0.3s;
 }
 
 #filter:focus {
-  border-bottom-color: rgba(71, 71, 71, 0.8);
+  border-bottom-color: #7fe7ba;
 }
 
- h2, #type {
-     margin-left: 0.25rem;
+h2,
+#type {
+  margin-left: 0.25rem;
+  color: #7fe7ba;
 }
- #submit, #type {
-     margin-top: 1rem;
+
+#submit,
+#type {
+  margin-top: 1rem;
 }
- section, form {
-     display: flex;
-     flex-direction: column;
+
+section,
+form {
+  display: flex;
+  flex-direction: column;
 }
- form {
-     gap: 0.5rem;
+
+form {
+  gap: 0.5rem;
 }
- section {
-     gap: 1rem;
+
+section {
+  gap: 1rem;
 }
- ul {
-     width: 100%;
-     padding: 0;
-     margin: 0;
-     display: flex;
-     flex-direction: column;
-     gap: 0.5rem;
+
+ul {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
- li {
-     white-space: nowrap;
-     display: flex;
-     align-items: center;
-     justify-content: space-between;
-     width: 100%;
-     padding: 0.5em;
-     list-style-type: none;
-     font-size: 1em;
-     width: 100%;
-     border: 0.125em solid rgba(71, 71, 71, 0.349);
-     background-color: rgba(255, 255, 255, 0.72);
-     border-radius: 0.25em;
+
+li {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.5em;
+  list-style-type: none;
+  font-size: 1rem;
+  background-color: #151b18;
+  border-radius: 0.5em;
+  color: #d8e3e7;
 }
- li > i {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     margin-right: 0.5em;
+
+li > i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5em;
+  color: #0e7c4a;
 }
- button {
-     display: block;
-     margin: 0;
-     padding: 0.75em;
-     font-weight: 600;
-     font-size: 1rem;
-     width: 100%;
-     border: 0.125em solid rgba(71, 71, 71, 0.349);
-     background-color: rgba(255, 255, 255, 0.72);
-     border-radius: 0.25em;
+
+button {
+  display: block;
+  margin: 0;
+  padding: 0.75em;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%;
+  border-style: none;
+  background-color: #0d9e5f;
+  border-radius: 0.25em;
+  color: #0b1216;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
- .transaction-info {
-     flex: 1;
-     display: flex;
-     flex-direction: row;
-     justify-content: space-between;
-     align-items: center;
+
+button:hover {
+  background-color: #0e7c4a;
+  color: #d8e3e7;
 }
- fieldset#type {
+
+.transaction-info {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+fieldset#type {
   flex-wrap: wrap;
-    margin: 0;
-    font-size: 1rem;
-    backdrop-filter: blur(25px) saturate(200%);
-    -webkit-backdrop-filter: blur(25px) saturate(200%);
-    background-color: rgba(255, 255, 255, 0.72);
-    border-radius: 0.75em;
-    border: 0.125em solid rgba(71, 71, 71, 0.349);
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5em;
-    user-select: none;
+  margin: 0;
+  font-size: 1rem;
+  background-color: #151b18;
+  border-radius: 0.75em;
+  border: 0.125em solid #151b18;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em;
+  user-select: none;
 }
 
 fieldset#type legend {
-    font-weight: 600;
-    user-select: none;
+  font-weight: 600;
+  user-select: none;
+  color: #7fe7ba;
 }
 
 fieldset#type label {
-    display: flex;
-    align-items: center;
-    gap: 0.25em;
-    font-weight: 500;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+  font-weight: 500;
+  cursor: pointer;
+  color: #d8e3e7;
 }
 
- .transaction-name-li {
-     max-width: 70%;
-     white-space: normal;
-     word-break: break-word;
-     overflow-wrap: anywhere;
+.transaction-name-li {
+  max-width: 70%;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
- .transaction-amount-li {
-     display: inline-block;
+
+.transaction-amount-li {
+  display: inline-block;
+  color: #d7ffec;
 }
- i {
-     vertical-align: middle;
-     margin: 0;
-     padding: 0;
+
+i {
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  color: #0e7c4a;
 }
- #transaction-name, #transaction-amount {
-     font-size: 1rem;
-     padding: 1em;
-     backdrop-filter: blur(25px) saturate(200%);
-     -webkit-backdrop-filter: blur(25px) saturate(200%);
-     background-color: rgba(255, 255, 255, 0.72);
-     border-radius: 0.75em;
-     border: 0.125em solid rgba(71, 71, 71, 0.349);
+
+#transaction-name,
+#transaction-amount {
+  font-size: 1rem;
+  padding: 1em;
+  background-color: #151b18;
+  border-radius: 0.75em;
+  border-style: none;
+  color: #d8e3e7;
 }
- 
